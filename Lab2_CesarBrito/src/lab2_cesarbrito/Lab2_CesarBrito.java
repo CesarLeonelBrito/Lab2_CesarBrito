@@ -42,7 +42,7 @@ public class Lab2_CesarBrito {
                             for (Object g : Restaurantes) {
                                 Object h = ((Restaurante) g).getEstado();
                                 String estado = h.toString();
-                                if(estado.equals(busq)){
+                                if (estado.equals(busq)) {
                                     System.out.println(Restaurantes.indexOf(g) + " - " + g);
                                 }
                             }
@@ -63,7 +63,16 @@ public class Lab2_CesarBrito {
                             }
                             break;
                         case 3:
-
+                            System.out.println("Ingrese que estado desea buscar los restaurantes [Remodelacion/ Demolicion/ Funcional]: ");
+                            busq = sc.next();
+                            System.out.println("Restaurantes " + busq);
+                            for (Object g : Restaurantes) {
+                                Object h = ((Restaurante) g).getFranquicia();
+                                String fran = h.toString();
+                                if (fran.equals(busq)) {
+                                    System.out.println(Restaurantes.indexOf(g) + " - " + g);
+                                }
+                            }
                             break;
                     }
                     break;
@@ -110,6 +119,19 @@ public class Lab2_CesarBrito {
                             int cajeros = sc.nextInt();
                             System.out.print("Ingrese el nombre del gerente: ");
                             String gerente = sc.next();
+                            int cont = 0;
+                            for (Object g : Restaurantes) {
+                                Object h = ((Restaurante) g).getGerente();
+                                String geren = h.toString();
+                                if (geren.equals(gerente)) {
+                                    cont++;
+                                }
+                                if (cont == 2) {
+                                    System.out.println("Ya tiene 2 restaurantes");
+                                    System.out.print("Ingrese el nombre del gerente: ");
+                                    gerente = sc.next();
+                                }
+                            }
                             System.out.print("Ingrese la especialidad: ");
                             String especialidad = sc.next();
                             System.out.println("Ingrese el estado del restaurante\n"
