@@ -63,7 +63,7 @@ public class Lab2_CesarBrito {
                             }
                             break;
                         case 3:
-                            System.out.println("Ingrese que estado desea buscar los restaurantes [Remodelacion/ Demolicion/ Funcional]: ");
+                            System.out.println("Ingrese la franquicia desea buscar los restaurantes : ");
                             busq = sc.next();
                             System.out.println("Restaurantes " + busq);
                             for (Object g : Restaurantes) {
@@ -90,10 +90,14 @@ public class Lab2_CesarBrito {
                             String nombre = sc.next();
                             System.out.print("Ingrese la ubicacion: ");
                             String ubicacion = sc.next();
-                            while (Restaurantes.contains(ubicacion)) {
-                                System.out.println("Ya hay un restaurante en esa ubicacion");
-                                System.out.print("Ingrese la ubicacion: ");
-                                ubicacion = sc.next();
+                            for (Object g : Restaurantes) {
+                                Object h = ((Restaurante) g).getUbicacion();
+                                String ubi = h.toString();
+                                if (ubi.equals(ubicacion)) {
+                                    System.out.println("Ya esta la ubicacion");
+                                    System.out.print("Ingrese la ubicacion: ");
+                                    ubicacion = sc.next();
+                                }
                             }
                             System.out.print("Ingrese la cantidad de empleados: ");
                             int empleados = sc.nextInt();
