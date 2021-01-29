@@ -13,12 +13,11 @@ public class Restaurante {
     private String gerente;
     private String especialidad;
     private String estado;
-    private String premium;
 
     public Restaurante() {
     }
 
-    public Restaurante(String franquicia, String nombre, String ubicacion, int empleados, String parqueo, String juegos, int mesas, int cajeros, String gerente, String especialidad, String estado, String premium) {
+    public Restaurante(String franquicia, String nombre, String ubicacion, int empleados, String parqueo, String juegos, int mesas, int cajeros, String gerente, String especialidad, String estado) {
         this.franquicia = franquicia;
         this.nombre = nombre;
         this.ubicacion = ubicacion;
@@ -30,7 +29,6 @@ public class Restaurante {
         this.gerente = gerente;
         this.especialidad = especialidad;
         this.estado = estado;
-        this.premium = premium;
     }
 
     public String getFranquicia() {
@@ -121,20 +119,9 @@ public class Restaurante {
         this.estado = estado;
     }
 
-    public String getPremium() {
-        return premium;
-    }
-
-    public void setPremium(String premium) {
-        this.premium = premium;
-    }
-
     @Override
     public String toString() {
-        return "Restaurante{" + "franquicia=" + franquicia + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", empleados=" + empleados + ", parqueo=" + parqueo + ", juegos=" + juegos + ", mesas=" + mesas + ", cajeros=" + cajeros + ", gerente=" + gerente + ", especialidad=" + especialidad + ", estado=" + estado + ", premium=" + premium + '}';
+        return "Restaurante{" + "franquicia=" + franquicia + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", empleados=" + empleados + ", parqueo=" + parqueo + ", juegos=" + juegos + ", mesas=" + mesas + ", cajeros=" + cajeros + ", gerente=" + gerente + ", especialidad=" + especialidad + ", estado=" + estado + '}';
     }
-    
-    
-
 
 }

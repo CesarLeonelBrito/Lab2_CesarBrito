@@ -36,10 +36,31 @@ public class Lab2_CesarBrito {
                     int opcion3 = sc.nextInt();
                     switch (opcion3) {
                         case 1:
-
+                            System.out.println("Ingrese que estado desea buscar los restaurantes [Remodelacion/ Demolicion/ Funcional]: ");
+                            String busq = sc.next();
+                            System.out.println("Restaurantes " + busq);
+                            for (Object g : Restaurantes) {
+                                Object h = ((Restaurante) g).getEstado();
+                                String estado = h.toString();
+                                if(estado.equals(busq)){
+                                    System.out.println(Restaurantes.indexOf(g) + " - " + g);
+                                }
+                            }
                             break;
                         case 2:
-
+                            System.out.println("Restaurantes premium");
+                            for (Object g : Restaurantes) {
+                                Object h = ((Restaurante) g).getParqueo();
+                                String park = h.toString();
+                                Object j = ((Restaurante) g).getJuegos();
+                                String games = j.toString();
+                                if (park.equals("Si hay parqueo") & games.equals("Si hay area de juegos")) {
+                                    Object nombre = ((Restaurante) g).getNombre();
+                                    Object especialidad = ((Restaurante) g).getEspecialidad();
+                                    Object ubicacion = ((Restaurante) g).getUbicacion();
+                                    System.out.println(Restaurantes.indexOf(g) + " - Nombre: " + nombre + ", Especialidad: " + especialidad + ", Ubicacion: " + ubicacion);
+                                }
+                            }
                             break;
                         case 3:
 
@@ -110,7 +131,12 @@ public class Lab2_CesarBrito {
                             } else {
                                 premium = "Normal";
                             }
-                            Restaurantes.add(new Restaurante(franquicia, nombre, ubicacion, empleados, parqueo, juegos, mesas, cajeros, gerente, especialidad, estado, premium));
+                            if (estado.equals("Funcional")) {
+                                Restaurantes.add(new Restaurante(franquicia, nombre, ubicacion, empleados, parqueo, juegos, mesas, cajeros, gerente, especialidad, estado));
+                            } else {
+                                Restaurantes.add(new Restaurante(franquicia, nombre, ubicacion, empleados, parqueo, juegos, 0, cajeros, "No hay gerente", "No hay especialidad", estado));
+                            }
+
                             break;
                         case 2:
                             for (Object g : Restaurantes) {
@@ -171,24 +197,31 @@ public class Lab2_CesarBrito {
                                 } else {
                                     estado = "Funcional";
                                 }
-                                premium = "";
-                                if (parqueo.equals("Si hay parqueo") & juegos.equals("Si hay area de juegos")) {
-                                    premium = "Premium";
+                                if (estado.equals("Funcional")) {
+                                    ((Restaurante) Restaurantes.get(po)).setFranquicia(franquicia);
+                                    ((Restaurante) Restaurantes.get(po)).setNombre(nombre);
+                                    ((Restaurante) Restaurantes.get(po)).setUbicacion(ubicacion);
+                                    ((Restaurante) Restaurantes.get(po)).setEmpleados(empleados);
+                                    ((Restaurante) Restaurantes.get(po)).setParqueo(parqueo);
+                                    ((Restaurante) Restaurantes.get(po)).setJuegos(juegos);
+                                    ((Restaurante) Restaurantes.get(po)).setMesas(mesas);
+                                    ((Restaurante) Restaurantes.get(po)).setCajeros(cajeros);
+                                    ((Restaurante) Restaurantes.get(po)).setGerente(gerente);
+                                    ((Restaurante) Restaurantes.get(po)).setEspecialidad(especialidad);
+                                    ((Restaurante) Restaurantes.get(po)).setEstado(estado);
                                 } else {
-                                    premium = "Normal";
+                                    ((Restaurante) Restaurantes.get(po)).setFranquicia(franquicia);
+                                    ((Restaurante) Restaurantes.get(po)).setNombre(nombre);
+                                    ((Restaurante) Restaurantes.get(po)).setUbicacion(ubicacion);
+                                    ((Restaurante) Restaurantes.get(po)).setEmpleados(empleados);
+                                    ((Restaurante) Restaurantes.get(po)).setParqueo(parqueo);
+                                    ((Restaurante) Restaurantes.get(po)).setJuegos(juegos);
+                                    ((Restaurante) Restaurantes.get(po)).setMesas(0);
+                                    ((Restaurante) Restaurantes.get(po)).setCajeros(cajeros);
+                                    ((Restaurante) Restaurantes.get(po)).setGerente("No hay gerente");
+                                    ((Restaurante) Restaurantes.get(po)).setEspecialidad("No hay especialidad");
+                                    ((Restaurante) Restaurantes.get(po)).setEstado(estado);
                                 }
-                                ((Restaurante) Restaurantes.get(po)).setFranquicia(franquicia);
-                                ((Restaurante) Restaurantes.get(po)).setNombre(nombre);
-                                ((Restaurante) Restaurantes.get(po)).setUbicacion(ubicacion);
-                                ((Restaurante) Restaurantes.get(po)).setEmpleados(empleados);
-                                ((Restaurante) Restaurantes.get(po)).setParqueo(parqueo);
-                                ((Restaurante) Restaurantes.get(po)).setJuegos(juegos);
-                                ((Restaurante) Restaurantes.get(po)).setMesas(mesas);
-                                ((Restaurante) Restaurantes.get(po)).setCajeros(cajeros);
-                                ((Restaurante) Restaurantes.get(po)).setGerente(gerente);
-                                ((Restaurante) Restaurantes.get(po)).setEspecialidad(especialidad);
-                                ((Restaurante) Restaurantes.get(po)).setEstado(estado);
-                                ((Restaurante) Restaurantes.get(po)).setPremium(premium);
                             } else {
                                 System.out.println("La posicion que ingreso no tiene restaurante");
                             }
